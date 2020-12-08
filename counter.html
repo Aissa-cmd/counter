@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Counter</title>
+        <style>
+            .container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .number {
+                font-size: 5rem;
+                margin-bottom: 20px;
+                /*color: #463f3f;*/
+            }
+            h2 {
+                font-size: 3rem;
+            }
+            .buttons-container {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            button {
+                border: 2px solid #000;
+                border-radius: 4px;
+                padding: 3px 14px;
+                margin: 3px;
+                outline: none;
+                transition: all 0.3s;
+            }
+            button:hover {
+                background-color: #000;
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Counter</h2>
+            <div class="number" id="counter">0</div>
+            <div class="buttons-container">
+                <button id="decrease">DECREASE</button>
+                <button id="reset">RESET</button>
+                <button id="increase">INCREASE</button>
+            </div>
+        </div>
+        <script>
+            const number = document.getElementById("counter");
+            const buttons = document.querySelector(".buttons-container");
+            buttons.addEventListener("click", function (e) {
+                let count = number.textContent;
+                if (e.target.id == "reset") {
+                    count = 0;
+                } else if (e.target.id == "decrease") {
+                    count--;
+                } else if (e.target.id == "increase") {
+                    count++;
+                }
+                if (count == 0) {
+                    number.style.color = "#000000";
+                } else if (count > 0) {
+                    number.style.color = "#00ff00";
+                } else if (count < 0) {
+                    number.style.color = "#ff0000";
+                }
+                number.textContent = count;
+            });
+        </script>
+    </body>
+</html>
